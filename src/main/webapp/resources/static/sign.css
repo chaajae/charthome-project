@@ -1,0 +1,129 @@
+body{
+    background-color: rgb(25, 25, 25);
+    color: white;
+    font-family: 'JeonjuCraftGoR';
+}
+@font-face {
+    font-family: 'JeonjuCraftGoR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/JeonjuCraftGoR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.signup-form-wrap{
+    width: 30em;
+    margin: auto;
+    margin-top: 7em;
+}
+
+.signup-header{
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.signin-header{
+    font-size: 2.5em;
+    text-align: center;
+    margin-top: 3em;
+    margin-bottom: 1.5em;
+}
+
+.signup-comment{
+    margin-top: 0.5em;
+    margin-bottom: 4em;
+    color: gray;
+    text-align: center;
+}
+
+.signup-form-wrap input{
+    width: 98%;
+    height: 3em;
+    border-radius: 0.5em;
+    padding-left: 0.5em;
+    border: none;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    font-size: 1em;
+}
+
+.signup-label{
+    font-size: 1.2em;
+    margin-top: 0.8em;
+    margin-bottom: 0.5em;
+}
+
+.input-label{
+    font-size: 0.8em;
+    visibility: hidden;
+}
+
+.signup-btn{
+    margin-top: 0.8em;
+    width: 100%;
+    height: 2.6em;
+    border: none;
+    border-radius: 0.5em;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.signin-btn{
+    margin-top: 0.8em;
+    width: 100%;
+    height: 2.6em;
+    border: none;
+    border-radius: 0.5em;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    margin-bottom: 10em;
+}
+
+.sbtn{
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+.sbtn:hover{
+    cursor: pointer;
+}
+
+
+.naver-login-logo{
+    height:3em;
+    weight:6em;
+
+}
+
+.naver-login-wrap{
+    display:flex;
+    justify-content:center;
+    margin-top:3em;
+
+}
+
+.naver-login-wrap a{
+    text-decoration: none;
+    color:white;
+}
+
+.naver-signup{
+    width: 13em;
+    height: 2.5em;
+    background-color: rgb(3,199,20);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    border-radius: 0.3em;
+}
+
+.naver-signup:hover{
+    background-color: rgb(3,199,90);
+}

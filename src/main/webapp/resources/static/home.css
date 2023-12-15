@@ -1,0 +1,110 @@
+.content-body{
+    width: 75em;
+    margin: auto;
+}
+
+.content-body h3{
+    margin-left: 2em;
+    margin-top: 2em;
+    margin-bottom:0;
+}
+
+.home-chart-wrap{
+    width: 100%;
+    display: flex;
+    margin-top:1em;
+}
+
+.home-chart{
+    width: 20em;
+    height: auto;
+    margin: auto;
+}
+
+.home-chart a{
+    color: white;
+    text-decoration: none;
+}
+
+.origin-chart-link:hover{
+    color: rgb(216, 207, 177);
+    color: rgb(179, 214, 244);
+}
+
+.home-chart-wrap label{
+    font-weight: bold;
+}
+
+.home-chart-item{
+    margin-top: 0.6em;
+}
+
+.home-chart-item thead{
+    background-color: rgb(92, 92, 92);
+}
+
+.home-chart-item table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.home-chart-item tr{
+    height: 2em;
+    border-bottom: 1px solid gray;
+}
+
+.home-chart-item tbody tr{
+    height: 4em;
+}
+
+.home-chart-title p{
+    margin: 0;
+    font-size:0.8em;
+}
+
+.home-chart-artist{
+    font-size:0.7em;
+}
+
+.home-chart-item tbody{
+    background-color: rgb(50, 50, 50);
+}
+
+.home-chart-item thead,.home-chart-item .home-chart-rank, .home-chart-img{
+    text-align: center;
+}
+
+.home-chart-img img{
+    width: 3em;
+    height: 3em;
+}
+
+.rank-header{
+    width:4em;
+}
+
+.home-chart-img{
+    width:4em;
+}
+
+.melon-logo{
+    width:1.3em;
+    height:1.3em;
+    margin-bottom:-0.2em;
+}
+
+.genie-logo{
+     width:1.1em;
+        height:1.1em;
+        margin-bottom:-0.2em;
+}
+
+.datetime{
+    font-size:0.8em;
+    text-align:end;
+    color: rgb(216, 207, 177);
+    margin-left:3em;
+}
+
+
+

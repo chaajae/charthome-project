@@ -1,0 +1,596 @@
+body{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'JeonjuCraftGoR';
+}
+
+@font-face {
+    font-family: 'JeonjuCraftGoR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/JeonjuCraftGoR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+.boardType-title{
+    font-size: 1.5em;
+}
+
+.boardlist-wrap{
+    width: 55em;
+    margin: auto;
+    margin-top: 3em;
+}
+
+.boardlist-header-wrap{
+    display: flex;
+    margin-top: 4em;
+}
+
+.boardlist-searchbar{
+
+    height: 40px;
+    width: 42em;
+    text-align: end;
+}
+
+.board-search-selectbar{
+    background-color: rgb(50, 50, 50);
+    color: white;
+    width: 8em;
+    height: 2.1em;
+    font-size: 1em;
+    border-radius: 0.5em;
+    text-align: center;
+    border: none;
+
+}
+
+.board-searchbar{
+    background-color: rgb(50, 50, 50);
+    height: 1.9em;
+    border-radius: 0.5em;
+    padding-left: 0;
+    font-size: 1em;
+    color: white;
+    border: none;
+    margin-left: 0.5em;
+    padding-left: 0.5em;
+    padding-top: 2px;
+}
+
+.board-search-btn{
+    width: 5em;
+    font-size: 1em;
+    height: 1.99em;
+    border: none;
+    border-radius: 0.5em;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    margin-left: 0.5em;
+
+}
+
+.board-search-btn:hover{
+    cursor: pointer;
+    background-color: rgb(70, 70, 70);
+    color: rgb(179, 214, 244);
+}
+
+
+.board-write-btn-wrap{
+    width: 13em;
+    height: 2.1em;
+    display: flex;
+    justify-content: end;
+    margin-top:0.05em;
+}
+
+.board-write-btn{
+    width: 6.4em;
+    height: 1.99em;
+    font-size:1em;
+    background-color: rgb(50, 50, 50);
+    border: none;
+    border-radius: 0.5em;
+    color:white;
+}
+
+.board-write-btn:hover{
+    cursor: pointer;
+    background-color: rgb(70, 70, 70);
+    color: rgb(179, 214, 244);
+}
+
+
+
+.boardlist-table{
+    margin-top: 2em;
+    min-height: 35em;
+    height:auto;
+}
+
+.board-table{
+    border-collapse: collapse;
+}
+
+.board-table thead{
+    height: 1.8em;
+    text-align: center;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+    background-color: rgb(40, 40, 40);
+}
+
+
+
+.board-table tr{
+    border-bottom: 1px solid gray
+}
+
+.board-table tbody tr:hover{
+    cursor: pointer;
+}
+
+.board-table tbody tr:hover .board-content{
+    color: rgb(179, 214, 244);
+}
+
+.board-table img{
+    width: 3em;
+    height: 3em;
+    border-radius: 0.5em;
+
+}
+
+
+.table-content{
+    width: 47em;
+}
+
+.table-likes ,.table-hits{
+    width: 7em;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.thead-hits{
+    padding-left: 1.6em;
+}
+.thead-likes{
+    padding-left: 1.2em;
+}
+
+.thumbnail-img{
+    width: 4.5em;
+    height: 4.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.board-content{
+    font-size: 1em;
+    font-weight: bold;
+}
+
+
+.boardwriter, .create-date{
+    color: gray;
+    font-size: 0.85em;
+}
+
+.create-date{
+    margin-left: 0.8em;
+}
+
+.replycount{
+    margin-left: 0.6em;
+    color: rgb(216, 216, 216);
+    color: rgb(216, 207, 177);
+}
+.table-likes-and-hits{
+    width: 7em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 토스트 에디터 추가 이후*/
+.write-form-wrap{
+    width: 57em;
+    margin: auto;
+}
+
+.toastui-editor-dark.toastui-editor-defaultUI {
+    border-color: gray;
+  }
+
+
+.board-write-header{
+    font-size: 1.5em;
+    margin-top: 3em;
+    margin-bottom: 1.5em;
+}
+
+.board-write-title{
+    width: 98.8%;
+    height: 2.3em;
+    font-size: 1em;
+    border-radius: 0.5em;
+    border: 1px solid gray;
+    background-color: rgb(20, 20, 20);
+    color: white;
+    margin-bottom: 1.5em;
+    padding-left: 0.5em;
+}
+
+.board-submit-btn{
+    width: 100%;
+    height: 2.3em;
+    border: 1px solid gray;
+    border-radius: 0.4em;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    margin-top: 1em;
+    font-size: 1.2em;
+}
+
+.board-submit-btn:hover{
+    cursor: pointer;
+    background-color: rgb(70, 70, 70);
+    color: rgb(179, 214, 244);
+}
+
+.select-boardType{
+    width: 100%;
+    height: 2.55em;
+    color: white;
+    background-color: rgb(20, 20, 20);
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+    font-size: 1em;
+    padding-left: 5px;
+}
+
+.toastui-editor{
+    min-height: 26em !important;
+}
+
+/* 게시물 상세보기 추가이후 */
+.boardDetail-wrap{
+    width: 100%;
+    margin-top: 1.5em;
+}
+
+.board-title{
+    height: 2em;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid gray;
+    padding-top: 0.5em;
+}
+
+.boardDetail-profile-img{
+    width: 2em;
+    height: 2em;
+    border-radius: 8em;
+}
+
+.board-info{
+    margin-top: 0.5em;
+    border-bottom: 1px solid gray;
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.5em;
+}
+.boardDetail-boardwriter{
+    margin-left: 0.6em;
+    color: white;
+}
+
+.boardDetail-boarddate,.boardDetail-hits,.boardDetail-likes{
+    margin-left: 0.6em;
+    color: gray;
+    display: flex;
+
+}
+
+.boardDetail{
+    width: 100%;
+    min-height: 25em;
+    height: auto;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    margin-bottom: 2em;
+    word-wrap: break-word;
+}
+
+.boardlike-area{
+    border-bottom: 1px solid gray;
+    padding-bottom: 2.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boardlike-btn{
+    width: 8em;
+    height: 2em;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boardlike-btn:hover,.reply-btn:hover{
+    cursor: pointer;
+    background-color: rgb(70, 70, 70);
+    color: rgb(179, 214, 244);
+}
+
+.rereply-btn:hover{
+    cursor: pointer;
+    color: rgb(179, 214, 244);
+
+}
+
+.board-replyarea{
+    margin-top: 2.5em;
+}
+
+.reply-count{
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.board-replyContent{
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid rgb(67, 67, 67);
+    font-size: 0.9em;
+}
+
+.reply-count-wrap{
+    padding-bottom: 1em;
+}
+.reply-info-wrap{
+    display: flex;
+    justify-content: space-between;
+}
+
+.reply-info{
+    display: flex;
+    align-items: center;
+}
+
+.reply-info span{
+    margin-left: 0.6em;
+}
+
+.reply-date{
+    color: gray;
+}
+
+.reply-info-wrap svg:hover{
+    cursor: pointer;
+    color: rgb(179, 214, 244);
+}
+
+.reply-content{
+    padding-left: 2.6em;
+    padding-top: 0.8em;
+}
+
+.rereply-btn-wrap{
+    padding-top: 0.5em;
+    font-size: 0.8em;
+    display: flex;
+    justify-content: end;
+}
+
+.rereply-btn{
+    color: gray;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+
+.reply-input-wrap{
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.reply-input-wrap textarea{
+    width: 92%;
+    min-height: 5em;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    padding-left: 1em;
+    padding-top: 1em;
+    border: none;
+    resize: none;
+    border-radius: 0.5em;
+}
+
+.reply-input-wrap textarea:focus{
+    border: none;
+    outline: none;
+}
+
+.rereply-input-wrap{
+    width: 96%;
+    margin-left: 2.45em;
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rereply-input-wrap textarea{
+    width: 92%;
+    min-height: 5em;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    padding-left: 1em;
+    padding-top: 1em;
+    border: none;
+    resize: none;
+    border-radius: 0.5em;
+}
+
+.rereply-input-wrap textarea:focus{
+    border: none;
+    outline: none;
+}
+
+.reply-btn{
+    width: 5%;
+    border-radius: 0.5em;
+    border: none;
+    color: white;
+    background-color: rgb(50, 50, 50);
+}
+
+.reply-popup{
+    list-style: none;
+    position: absolute;
+    margin-left: -4em;
+    z-index: 1;
+    background-color: rgb(50, 50, 50);
+}
+
+.reply-popup li{
+    border: 1px solid rgb(63, 63, 63);
+    width: 4.3em;
+    height: 1.9em;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reply-popup li:hover{
+    cursor: pointer;
+    color: rgb(179, 214, 244);
+    background-color: rgb(29, 29, 29);
+}
+
+
+/* 마이페이지 CSS */
+.mypage-wrap{
+    /* background-color: aqua; */
+    width: 45em;
+    height: 35em;
+    margin: auto;
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+.mypage-text{
+    font-size: 1.7em;
+    font-weight: 500;
+}
+
+.mypage-profile-img{
+    text-align: center;
+    padding-top: 2em;
+}
+
+.mypage-profile-img img{
+    width: 8em;
+    height: 8em;
+    border-radius: 15em;
+
+}
+
+.profile-img-change-btn{
+    background-color:  rgb(50, 50, 50);
+    font-size: 0.9em;
+    width:6.5em;
+    height: 2.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.3em;
+    margin: auto;
+    margin-top: 0.5em;
+}
+
+.profile-img-change-btn:hover{
+    cursor: pointer;
+    background-color: rgb(70, 70, 70);
+    color: rgb(179, 214, 244);
+}
+
+
+.mypage-nick-wrap{
+    display: flex;
+    justify-content: center;
+}
+
+.mypage-nick{
+    width: 22em;
+    height: 3em;
+    border-radius: 0.3em;
+    background-color: rgb(50, 50, 50);
+    padding-left: 0.5em;
+    color: white;
+    border: none;
+    margin-top: 2.5em;
+}
+
+.nick-update-btn{
+    background-color: rgb(50, 50, 50);
+    width: 21em;
+    border-radius: 0.3em;
+    height: 2.9em;
+    font-size: 0.9em;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1em;
+    color:white;
+
+}
+
+.nick-update-btn:hover{
+    cursor: pointer;
+    background-color: rgb(70, 70, 70);
+    color: rgb(179, 214, 244);
+}
+
+.withdrawal-btn{
+    background-color: rgb(182, 23, 23);
+    width: 12em;
+    height: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.3em;
+    margin: auto;
+    margin-top: 8em;
+}
+
+.withdrawal-btn:hover{
+    cursor: pointer;
+    background-color: rgb(202, 64, 64);
+}
