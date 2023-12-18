@@ -53,7 +53,7 @@
 
                 <tbody>
 
-                    <tr onclick="location.href='/api/board/views/${boardCode}'">
+                    <tr onclick="location.href='/api/board/views/${boardCode}/4'">
                         <td class="thumbnail-img">
                             <img src="https://i.namu.wiki/i/w11dbZZeomJI4bD3_KItw3vq7tgglcM1YQA_xHULxMsixPpY1S7KcB8WrEFhJNuSuejiiQkicGKMH12JvpUqBQ.webp" alt="">
                         </td>

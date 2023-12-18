@@ -36,8 +36,11 @@ public class BoardController {
         return ResponseEntity.ok("성공");
     }
 
-    @GetMapping("/views/{boardCode}")
-    public String getBoardItem(@PathVariable String boardCode, Model model){
+    @GetMapping("/views/{boardCode}/{boardNo}")
+    public String getBoardItem(@PathVariable String boardCode, Model model, @PathVariable Long boardNo){
+        BoardEntity boardItem = boardService.getBoardItem(boardNo);
+        log.info("보드아이템 = {} ",boardItem);
+        model.addAttribute("boardItem",boardItem);
         return "board/boardDetailView";
     }
 }
