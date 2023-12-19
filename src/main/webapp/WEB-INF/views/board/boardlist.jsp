@@ -14,7 +14,11 @@
 
     <div class="boardlist-wrap">
         <div class="boardType-title">
-            국내 음악
+            <c:forEach items="${boardTypeList }" var="bt">
+                <c:if test="${bt.boardCode == boardCode }">
+                    ${bt.boardName }
+                </c:if>
+            </c:forEach>
         </div>
 
         <div class="boardlist-header-wrap">

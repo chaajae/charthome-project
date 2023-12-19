@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @Slf4j
 @RequestMapping("/api/board")
@@ -19,6 +21,8 @@ public class BoardController {
     private final BoardService boardService;
     @GetMapping("/list/{boardCode}")
     public String getBoardList(@PathVariable String boardCode, Model model) {
+        List<BoardDTO> list = boardService.boardList(boardCode);
+
         return "board/boardlist";
     }
 
