@@ -594,3 +594,36 @@ body{
     cursor: pointer;
     background-color: rgb(202, 64, 64);
 }
+
+.paging-wrap{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.paging-area{
+    margin-top:2em;
+    display:flex;
+}
+
+
+.paging-area a{
+    color:white;
+    text-decoration:none;
+}
+.paging-area div{
+    display:flex;
+    align-items:center;
+    margin-left:0.6em;
+    margin-right:0.6em;
+}
+
+.currentPage{
+    color:gray;
+}
+
+.paging-btn{
+    font-weight:bold;
+}
+

@@ -1,15 +1,14 @@
 package com.charthome.user.model.entity;
 
+import com.charthome.board.model.entity.BoardEntity;
 import com.charthome.common.entity.BaseTimeEntity;
 import com.charthome.oauth.model.dto.NaverDTO;
-import lombok.Cleanup;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.List;
 
 @Entity
 @Setter
@@ -36,6 +35,7 @@ public class UserEntity extends BaseTimeEntity {
 
     @Column
     private String userStatus;
+
 
     public static UserEntity toUserEntity(NaverDTO naverDTO) {
         UserEntity userEntity = new UserEntity();

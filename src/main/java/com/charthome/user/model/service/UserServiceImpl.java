@@ -34,6 +34,7 @@ public class UserServiceImpl implements UserService {
     public UserDTO updateProfile(UserDTO user) {
         Optional<UserEntity> fintUserEntity = userRepository.findUserByUserId(user.getUserId());
         UserEntity userEntity = fintUserEntity.get();
+        System.out.println("어케된겨"+userEntity.toString());
         userEntity.setUserProfile(user.getUserProfile());
         userEntity.setUserNick(user.getUserNick());
 

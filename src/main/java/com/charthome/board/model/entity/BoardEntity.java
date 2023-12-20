@@ -40,6 +40,8 @@ public class BoardEntity extends BaseTimeEntity {
     @Column
     private Long boardCount;
 
+
+
     public static BoardEntity toBoardEntity(BoardDTO boardDTO) {
         BoardEntity boardEntity = new BoardEntity();
         boardEntity.setBoardCode(boardDTO.getBoardCode());
