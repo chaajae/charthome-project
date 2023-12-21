@@ -1,14 +1,11 @@
 package com.charthome.user.model.entity;
 
-import com.charthome.board.model.entity.BoardEntity;
 import com.charthome.common.entity.BaseTimeEntity;
-import com.charthome.oauth.model.dto.NaverDTO;
+import com.charthome.oauth.model.dto.NaverDto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Setter
@@ -37,7 +34,7 @@ public class UserEntity extends BaseTimeEntity {
     private String userStatus;
 
 
-    public static UserEntity toUserEntity(NaverDTO naverDTO) {
+    public static UserEntity toUserEntity(NaverDto naverDTO) {
         UserEntity userEntity = new UserEntity();
         userEntity.setUserId(naverDTO.getId());
         userEntity.setUserEmail(naverDTO.getEmail());

@@ -1,6 +1,6 @@
 package com.charthome.user.model.service;
 
-import com.charthome.user.model.dto.UserDTO;
+import com.charthome.user.model.dto.UserDto;
 import com.charthome.user.model.entity.UserEntity;
 
 import java.util.Optional;
@@ -10,5 +10,5 @@ public interface UserService {
 
     Optional<UserEntity> findUserByUserId(String userId);
 
-    UserDTO updateProfile(UserDTO user);
+    UserDto updateProfile(UserDto user);
 }

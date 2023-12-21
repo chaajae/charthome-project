@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Builder
 @Data
-public class NaverDTO {
+public class NaverDto {
     private String id;
     private String email;
     private String name;

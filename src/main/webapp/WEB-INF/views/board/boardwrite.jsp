@@ -39,6 +39,7 @@
 
     <script>
         const { Editor } = toastui;
+        let imgList = [];
         const editor = new Editor({
             el: document.querySelector('#toastUI'), // 에디터를 적용할 요소 (컨테이너)
             height: 'auto',                        // 에디터 영역의 높이 값 (OOOpx || auto)
@@ -57,7 +58,7 @@
                             });
                             const filename = await response.text();
                             callback(filename, 'image alt attribute');
-
+                            imgList.push(filename);
                         } catch (error) {
                             console.error('업로드 실패 : ', error);
                         }
@@ -89,7 +90,8 @@
                         boardCode : '${boardCode}',
                         boardWriter : ${loginUser.userNo},
                         boardTitle : title,
-                        boardContent : editor.getHTML()
+                        boardContent : editor.getHTML(),
+                        imgList : imgList
                     }
                         try {
                             const response = await fetch("/api/board/write", {

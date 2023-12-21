@@ -1,17 +1,20 @@
 package com.charthome.board.model.service;
 
 
-import com.charthome.board.model.dto.BoardDTO;
-import com.charthome.board.model.entity.BoardEntity;
+import com.charthome.board.model.dto.BoardDto;
+import com.charthome.board.model.dto.BoardLikeDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public interface BoardService {
-    void save(BoardEntity board);
+    void boardWrite(BoardDto board);
 
-    BoardEntity getBoardItem(Long boardNo);
+    BoardDto getBoardItem(Long boardNo, HttpServletRequest req, HttpServletResponse res);
 
-    Page<BoardDTO> boardList(Pageable pageable, String boardCode);
+    Page<BoardDto> boardList(Pageable pageable, String boardCode);
+
+    void boardLike(BoardLikeDto boardLikeDto);
 }

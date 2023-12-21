@@ -1,7 +1,7 @@
 package com.charthome.board.controller;
 
-import com.charthome.board.model.dto.BoardDTO;
-import com.charthome.board.model.entity.BoardEntity;
+import com.charthome.board.model.dto.BoardDto;
+import com.charthome.board.model.dto.BoardLikeDto;
 import com.charthome.board.model.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @Slf4j
@@ -24,7 +25,7 @@ public class BoardController {
     private final BoardService boardService;
     @GetMapping("/list/{boardCode}")
     public String getBoardList(@PageableDefault(page = 1) Pageable pageable, @PathVariable String boardCode, Model model) {
-        Page<BoardDTO> boardPages = boardService.boardList(pageable,boardCode);
+        Page<BoardDto> boardPages = boardService.boardList(pageable,boardCode);
 
         int blockLimit = 5; // 변경된 페이지 범위 설정
         int startPage = (((int) Math.ceil(((double) pageable.getPageNumber() / blockLimit))) - 1) * blockLimit + 1;
@@ -43,18 +44,25 @@ public class BoardController {
 
     @PostMapping("/write")
     @ResponseBody
-    public ResponseEntity<String> boardWrite(@RequestBody final BoardDTO board) {
-
-        BoardEntity boardEntity = BoardEntity.toBoardEntity(board);
-        boardService.save(boardEntity);
+    public ResponseEntity<String> boardWrite(@RequestBody final BoardDto board) {
+        boardService.boardWrite(board);
         return ResponseEntity.ok("성공");
     }
 
     @GetMapping("/views/{boardCode}/{boardNo}")
-    public String getBoardItem(@PathVariable String boardCode, Model model, @PathVariable Long boardNo){
-        BoardEntity boardItem = boardService.getBoardItem(boardNo);
-        log.info("보드아이템 = {} ",boardItem);
+    public String getBoardItem(@PathVariable String boardCode, Model model, @PathVariable Long boardNo, HttpServletRequest req,
+                               HttpServletResponse res){
+        BoardDto boardItem = boardService.getBoardItem(boardNo,req,res);
+
         model.addAttribute("boardItem",boardItem);
         return "board/boardDetailView";
     }
+
+    @PostMapping("/like")
+    @ResponseBody
+    public ResponseEntity<String> boardLike(@RequestBody final BoardLikeDto boardLikeDto){
+        boardService.boardLike(boardLikeDto);
+        return ResponseEntity.ok("success");
+    }
+
 }

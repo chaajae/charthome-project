@@ -1,13 +1,8 @@
 package com.charthome.common.interceptor;
 
-import com.charthome.board.model.entity.BoardEntity;
-import com.charthome.board.repository.BoardRepository;
 import com.charthome.common.entity.BoardTypeEntity;
 import com.charthome.common.repository.BoardTypeRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.ServletContext;

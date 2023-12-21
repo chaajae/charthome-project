@@ -1,9 +1,7 @@
 package com.charthome.oauth.controller;
 
-import com.charthome.oauth.model.dto.NaverDTO;
 import com.charthome.oauth.model.service.OauthService;
-import com.charthome.user.model.dto.UserDTO;
-import com.charthome.user.model.entity.UserEntity;
+import com.charthome.user.model.dto.UserDto;
 import com.charthome.user.model.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
-import java.util.Date;
 
 @Controller
 @Slf4j
@@ -41,7 +38,7 @@ public class OauthController {
 
     @GetMapping("/naver/login")
     public String callback(HttpServletRequest request , Model model) throws Exception {
-        UserDTO loginUser = oauthService.getNaverInfo(request.getParameter("code"));
+        UserDto loginUser = oauthService.getNaverInfo(request.getParameter("code"));
         model.addAttribute("loginUser",loginUser);
 
         return "redirect:/";

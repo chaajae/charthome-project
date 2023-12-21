@@ -1,11 +1,7 @@
 package com.charthome.common;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.core.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.ServletContext;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;

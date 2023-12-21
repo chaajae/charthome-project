@@ -1,8 +1,6 @@
 package com.charthome.user.model.service;
 
-import com.charthome.attachment.model.entity.AttachmentEntity;
-import com.charthome.attachment.repository.AttachmentRepository;
-import com.charthome.user.model.dto.UserDTO;
+import com.charthome.user.model.dto.UserDto;
 import com.charthome.user.model.entity.UserEntity;
 import com.charthome.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,13 +29,13 @@ public class UserServiceImpl implements UserService {
 }
 
     @Override
-    public UserDTO updateProfile(UserDTO user) {
+    public UserDto updateProfile(UserDto user) {
         Optional<UserEntity> fintUserEntity = userRepository.findUserByUserId(user.getUserId());
         UserEntity userEntity = fintUserEntity.get();
-        System.out.println("어케된겨"+userEntity.toString());
+
         userEntity.setUserProfile(user.getUserProfile());
         userEntity.setUserNick(user.getUserNick());
 
-        return UserDTO.toUserDTO(userEntity);
+        return UserDto.toUserDTO(userEntity);
     }
 }

@@ -16,9 +16,13 @@ public class AttachmentEntity {
     @Column
     private String filePath;
 
-    public static AttachmentEntity toAttachmentEntity(String filePath) {
+    @Column
+    private Long boardNo;
+
+    public static AttachmentEntity toAttachmentEntity(String filePath,Long boardNo) {
         AttachmentEntity file = new AttachmentEntity();
         file.setFilePath(filePath);
+        file.setBoardNo(boardNo);
         return file;
     }
 }

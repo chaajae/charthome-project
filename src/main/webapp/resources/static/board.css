@@ -627,3 +627,6 @@ body{
     font-weight:bold;
 }
 
+.pages:hover{
+    color: rgb(179, 214, 244);
+}

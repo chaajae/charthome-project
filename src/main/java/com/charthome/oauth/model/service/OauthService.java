@@ -1,9 +1,9 @@
 package com.charthome.oauth.model.service;
 
-import com.charthome.oauth.model.dto.NaverDTO;
+import com.charthome.oauth.model.dto.NaverDto;
 
 
-import com.charthome.user.model.dto.UserDTO;
+import com.charthome.user.model.dto.UserDto;
 import com.charthome.user.model.entity.UserEntity;
 import com.charthome.user.model.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -48,7 +48,7 @@ public class OauthService {
 
         return uriComponents.toString();
     }
-    public UserDTO getNaverInfo(String code) throws Exception {
+    public UserDto getNaverInfo(String code) throws Exception {
         if (code == null) throw new Exception("Failed get authorization code");
 
         String accessToken = "";
@@ -84,7 +84,7 @@ public class OauthService {
             throw new Exception("API call failed");
         }
 
-        NaverDTO naverInfo = getUserInfoWithToken(accessToken);
+        NaverDto naverInfo = getUserInfoWithToken(accessToken);
         Optional<UserEntity> findUserByUserId = userService.findUserByUserId(naverInfo.getId());
         if(findUserByUserId.isEmpty()){
             UserEntity user = UserEntity.toUserEntity(naverInfo);
@@ -92,12 +92,12 @@ public class OauthService {
         }
 
         Optional<UserEntity> loginEntity = userService.findUserByUserId(naverInfo.getId());
-        UserDTO loginUser = UserDTO.toUserDTO(loginEntity.get());
+        UserDto loginUser = UserDto.toUserDTO(loginEntity.get());
 
         return loginUser;
     }
 
-    private NaverDTO getUserInfoWithToken(String accessToken) throws Exception {
+    private NaverDto getUserInfoWithToken(String accessToken) throws Exception {
         //HttpHeader 생성
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Bearer " + accessToken);
@@ -121,7 +121,7 @@ public class OauthService {
         String email = String.valueOf(account.get("email"));
         String name = String.valueOf(account.get("name"));
 
-        return NaverDTO.builder()
+        return NaverDto.builder()
                 .id(id)
                 .email(email)
                 .name(name).build();
