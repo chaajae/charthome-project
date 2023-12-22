@@ -3,6 +3,8 @@ package com.charthome.board.controller;
 import com.charthome.board.model.dto.BoardDto;
 import com.charthome.board.model.dto.BoardLikeDto;
 import com.charthome.board.model.service.BoardService;
+import com.charthome.reply.model.dto.ReplyDto;
+import com.charthome.reply.model.service.ReplyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Controller
 @Slf4j
@@ -23,6 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 public class BoardController {
 
     private final BoardService boardService;
+    private final ReplyService replyService;
     @GetMapping("/list/{boardCode}")
     public String getBoardList(@PageableDefault(page = 1) Pageable pageable, @PathVariable String boardCode, Model model) {
         Page<BoardDto> boardPages = boardService.boardList(pageable,boardCode);
@@ -53,7 +57,9 @@ public class BoardController {
     public String getBoardItem(@PathVariable String boardCode, Model model, @PathVariable Long boardNo, HttpServletRequest req,
                                HttpServletResponse res){
         BoardDto boardItem = boardService.getBoardItem(boardNo,req,res);
-
+        /* 수정 요망 */
+        List<ReplyDto> replyList = replyService.replyList(boardNo);
+        model.addAttribute("replyList",replyList);
         model.addAttribute("boardItem",boardItem);
         return "board/boardDetailView";
     }

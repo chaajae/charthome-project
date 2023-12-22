@@ -1,6 +1,7 @@
 package com.charthome.reply.model.entity;
 
 import com.charthome.common.entity.BaseTimeEntity;
+import com.charthome.reply.model.dto.ReplyDto;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -26,6 +27,13 @@ public class ReplyEntity extends BaseTimeEntity {
     @Column
     private String replyStatus;
 
+    public static ReplyEntity toEntity(ReplyDto reply){
+        ReplyEntity entity = new ReplyEntity();
+        entity.setBoardNo(reply.getBoardNo());
+        entity.setUserNo(reply.getUserNo());
+        entity.setReplyContent(reply.getReplyContent());
+        return entity;
+    }
 
     @PrePersist
     public void prePersist() {

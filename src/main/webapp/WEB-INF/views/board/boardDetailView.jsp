@@ -48,10 +48,7 @@
                 </span>
             </div>
 
-            <div class="boardDetail">
-                ${boardItem.boardContent}
-
-            </div>
+            <div class="boardDetail">${boardItem.boardContent}</div>
             <div class="boardlike-area">
                 <button class="boardlike-btn">
                       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="18" fill="white" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
@@ -65,100 +62,59 @@
             </div>
 
             <div class="board-replyarea">
-                <div class="reply-count-wrap">댓글 <span class="reply-count">2</span> 개</div>
-
-                <div class="board-replyContent">
-                    <div class="reply-info-wrap">
-                        <div class="reply-info">
-                            <img src="https://picpac.kr/common/img/default_profile.png" class="boardDetail-profile-img" alt="">
-                            <span>ckwogus</span>
-                            <span class="reply-date">2023-10-29</span>
-                        </div>
-
-                        <div class="reply-popup-btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                            </svg>
-                                <div class="reply-popup">
-                                    <li class="reply-update-btn">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                          </svg>
-                                        &nbsp; 수정
-                                    </li>
-                                    <li>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
-                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-                                          </svg>
-                                        &nbsp; 삭제
-                                    </li>
+                <div class="reply-count-wrap">댓글 <span class="reply-count">${replyList.size()}</span> 개</div>
+                    <c:forEach var="reply" items="${replyList}">
+                        <div class="board-replyContent">
+                            <div class="reply-info-wrap">
+                                <div class="reply-info">
+                                    <img src="https://picpac.kr/common/img/default_profile.png" class="boardDetail-profile-img" alt="">
+                                    <span>ckwogus</span>
+                                    <span class="reply-date">${reply.createDate}</span>
                                 </div>
+                                <c:if test="${loginUser.userNo eq reply.userNo}">
+                                    <div class="reply-popup-btn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                            </svg>
+
+                                            <div class="reply-popup">
+                                                <li class="reply-update-btn">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                      </svg>
+                                                    &nbsp; 수정
+                                                </li>
+                                                <li>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                                                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                                      </svg>
+                                                    &nbsp; 삭제
+                                                </li>
+                                            </div>
+                                    </div>
+                                </c:if>
+                            </div>
+
+                            <div class="reply-content">${reply.replyContent}</div>
+                            <div class="rereply-btn-wrap">
+                                <button class="rereply-btn">
+                                    댓글쓰기
+                                </button>
+                            </div>
+
+                            <div class="rereply-input-wrap">
+                                <textarea placeholder="댓글을 입력해주세요."></textarea>
+                                <button class="reply-btn">등록</button>
+                            </div>
                         </div>
-                    </div>
+                    </c:forEach>
 
-                    <div class="reply-content">모든 지식의 신 ㄷㄷ모든 지식의 신 ㄷㄷ모든 지식의 신 ㄷㄷ모든 지식의 신 ㄷㄷ모든 지식의 신 ㄷㄷ모든 지식의 신 ㄷㄷ모든 지식의 신 ㄷㄷ모든 지식의 신 ㄷㄷ모든 지식의 신 ㄷㄷ
-                    </div>
-                    <div class="rereply-btn-wrap">
-                        <button class="rereply-btn">
-                            댓글쓰기
-                        </button>
-                    </div>
 
-                    <div class="rereply-input-wrap">
-                        <textarea placeholder="댓글을 입력해주세요."></textarea>
-                        <button class="reply-btn">등록</button>
-                    </div>
-
-                </div>
-
-                <div class="board-replyContent">
-                    <div class="reply-info-wrap">
-                        <div class="reply-info">
-                            <img src="https://picpac.kr/common/img/default_profile.png" class="boardDetail-profile-img" alt="">
-                            <span>ckwogus</span>
-                            <span class="reply-date">2023-10-29</span>
-                        </div>
-
-                        <div class="reply-popup-btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                            </svg>
-                                <div class="reply-popup">
-                                    <li class="reply-update-btn">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                          </svg>
-                                        &nbsp; 수정
-                                    </li>
-                                    <li>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
-                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-                                          </svg>
-                                        &nbsp; 삭제
-                                    </li>
-                                </div>
-                        </div>
-                    </div>
-
-                    <div class="reply-content">ddd
-                    </div>
-                    <div class="rereply-btn-wrap">
-                        <button class="rereply-btn">
-                            댓글쓰기
-                        </button>
-                    </div>
-                    <div class="rereply-input-wrap">
-                        <textarea placeholder="댓글을 입력해주세요."></textarea>
-                        <button class="reply-btn">등록</button>
-                    </div>
-                </div>
 
                 <div class="reply-input-wrap">
-                    <textarea placeholder="댓글을 입력해주세요." class="reply-text"></textarea>
+                    <textarea placeholder="댓글을 입력해주세요." class="reply-text" ></textarea>
                     <button class="reply-btn">등록</button>
                 </div>
             </div>
@@ -168,11 +124,9 @@
 <jsp:include page="../common/footer.jsp"/>
 
     <script>
-    const thumb = (event) => {
+        const thumb = (event) => {
             const clickedButton = event.currentTarget;
             const svgInsideButton = clickedButton.querySelector('svg');
-
-            console.log(svgInsideButton); // 선택된 SVG 태그에 대한 참조를 출력 (여기서는 콘솔에 출력만 함)
         };
 
         $(function(){
@@ -207,6 +161,7 @@
             $(".boardlike-btn").click(function(){
                 <c:if test="${loginUser eq null}">
                     alert("로그인 후 가능합니다.");
+                    location.href = '/signin';
                 </c:if>
                 <c:if test="${loginUser ne null}">
                     const boardLike = {
@@ -229,14 +184,42 @@
                                 } else {
                                     $(".boardlike-btn").html(filledThumbUp);
                                 }
-
                                 filled = !filled;
                         }
                     });
                 </c:if>
             });
 
+            if(${loginUser eq null}){
+                $(".reply-text").prop("disabled", true);
+                $("button.reply-btn").prop("disabled", true);
+                $(".rereply-btn").hide();
+                $(".reply-text").attr("placeholder", "로그인 후 댓글작성이 가능합니다.");
+            }
 
+            $("button.reply-btn").click(function (){
+
+                <c:if test="${loginUser ne null}">
+                let content = $(".reply-text").val();
+                if(content.length > 0 ){
+                    const reply = {
+                        userNo : ${loginUser.userNo},
+                        boardNo : '${boardItem.boardNo}',
+                        replyContent : content
+                    };
+                    $.ajax({
+                        url : "/api/reply/save",
+                        data: JSON.stringify(reply),
+                        method : "POST",
+                        processData: false,
+                        contentType: 'application/json',
+                        success : function(result){
+                            location.reload();
+                        }
+                    });
+                }
+                </c:if>
+            })
 
 
         });

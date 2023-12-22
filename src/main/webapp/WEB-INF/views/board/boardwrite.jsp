@@ -75,8 +75,7 @@
                 const title = $(".board-write-title").val();
                 if (title.length < 1) {
                     alert('제목을 입력해 주세요.');
-                }
-                if (editor.getMarkdown().length < 1) {
+                }else if (editor.getMarkdown().length < 1) {
                     alert('게시글 내용을 입력해 주세요.');
                     throw new Error('editor content is required!');
                 }else{

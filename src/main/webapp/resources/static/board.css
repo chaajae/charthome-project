@@ -318,6 +318,18 @@ body{
     word-wrap: break-word;
 }
 
+.boardDetail img{
+    max-height:25em;
+    max-width:75em;
+    display:block;
+    margin: 0 auto;
+}
+
+.toastui-editor-contents img {
+    display:block;
+    margin: 0 auto;
+}
+
 .boardlike-area{
     border-bottom: 1px solid gray;
     padding-bottom: 2.5em;

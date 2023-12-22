@@ -8,7 +8,6 @@ import com.charthome.board.model.entity.BoardEntity;
 import com.charthome.board.model.entity.BoardLikeEntity;
 import com.charthome.board.repository.BoardLikeRepository;
 import com.charthome.board.repository.BoardRepository;
-import com.charthome.common.TimeFormatter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -33,13 +32,7 @@ public class BoardServiceImpl implements BoardService{
     private final BoardLikeRepository boardLikeRepository;
     @Override
     public void boardWrite(BoardDto board) {
-//        BoardEntity boardEntity = BoardEntity.toBoardEntity(board);
-        BoardEntity boardEntity = BoardEntity.builder()
-                                    .boardCode(board.getBoardCode())
-                                    .boardWriter(board.getBoardWriter())
-                                    .boardTitle(board.getBoardTitle())
-                                    .boardContent(board.getBoardContent())
-                                    .build();
+        BoardEntity boardEntity = BoardEntity.toEntity(board);
 
         Long boardNo = boardRepository.save(boardEntity).getBoardNo();
         List<String> imgList = board.getImgList();
@@ -85,17 +78,9 @@ public class BoardServiceImpl implements BoardService{
             cookie.setMaxAge(60 * 60 * 1);
             res.addCookie(cookie);
         }
-//        BoardDto boardItem = BoardDto.toBoardDto(boardEntity);
-        BoardDto boardItem = BoardDto.builder()
-                .boardNo(boardEntity.getBoardNo())
-                .boardCode(boardEntity.getBoardCode())
-                .boardWriter(boardEntity.getBoardWriter())
-                .boardTitle(boardEntity.getBoardTitle())
-                .boardContent(boardEntity.getBoardContent())
-                .createDate(TimeFormatter.formatTimeString(boardEntity.getCreateDate()))
-                .boardStatus(boardEntity.getBoardStatus())
-                .boardCount(boardEntity.getBoardCount())
-                .build();
+        BoardDto boardItem = BoardDto.toDto(boardEntity);
+
+
 
         return boardItem;
     }
@@ -109,19 +94,9 @@ public class BoardServiceImpl implements BoardService{
         int pageLimit = 10;
         Page<BoardEntity> entityList = boardRepository.findAllByBoardCode(boardCode,PageRequest.of(page,pageLimit,Sort.by(Sort.Direction.DESC,"boardNo")));
         Page<BoardDto> dtoList = entityList.map(
-//                entity -> BoardDto.toBoardDto(entity)
-                entity -> BoardDto.builder()
-                        .boardNo(entity.getBoardNo())
-                        .boardCode(entity.getBoardCode())
-                        .boardWriter(entity.getBoardWriter())
-                        .boardTitle(entity.getBoardTitle())
-                        .boardContent(entity.getBoardContent())
-                        .createDate(TimeFormatter.formatTimeString(entity.getCreateDate()))
-                        .boardStatus(entity.getBoardStatus())
-                        .boardCount(entity.getBoardCount())
-                        .build()
-        );
+                entity -> BoardDto.toDto(entity)
 
+        );
         return dtoList;
     }
 
