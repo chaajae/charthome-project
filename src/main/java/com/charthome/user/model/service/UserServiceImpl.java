@@ -25,17 +25,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<UserEntity> findUserByUserId(String userId) {
-    return userRepository.findUserByUserId(userId);
+    return userRepository.findByUserId(userId);
 }
 
     @Override
     public UserDto updateProfile(UserDto user) {
-        Optional<UserEntity> fintUserEntity = userRepository.findUserByUserId(user.getUserId());
+        Optional<UserEntity> fintUserEntity = userRepository.findByUserId(user.getUserId());
         UserEntity userEntity = fintUserEntity.get();
 
         userEntity.setUserProfile(user.getUserProfile());
         userEntity.setUserNick(user.getUserNick());
 
-        return UserDto.toUserDTO(userEntity);
+//        return UserDto.toUserDTO(userEntity);
+        return new UserDto(userEntity);
     }
 }

@@ -19,15 +19,22 @@ public class UserDto {
     private String userProfile;
     private String userStatus;
 
-    public static UserDto toUserDTO(UserEntity loginEntity){
-        UserDto loginUser = new UserDto();
-        loginUser.setUserNo(loginEntity.getUserNo());
-        loginUser.setUserNick(loginEntity.getUserNick());
-        loginUser.setUserProfile(loginEntity.getUserProfile());
-        loginUser.setUserEmail(loginEntity.getUserEmail());
-        loginUser.setUserId(loginEntity.getUserId());
-
-        return loginUser;
+    public UserDto(UserEntity user) {
+        userNo = user.getId();
+        userId = user.getUserId();
+        userEmail = user.getUserEmail();
+        userNick = user.getUserNick();
+        userProfile = user.getUserProfile();
     }
+//    public static UserDto toUserDTO(UserEntity loginEntity){
+//        UserDto loginUser = new UserDto();
+//        loginUser.setUserNo(loginEntity.getId());
+//        loginUser.setUserNick(loginEntity.getUserNick());
+//        loginUser.setUserProfile(loginEntity.getUserProfile());
+//        loginUser.setUserEmail(loginEntity.getUserEmail());
+//        loginUser.setUserId(loginEntity.getUserId());
+//
+//        return loginUser;
+//    }
 
 }

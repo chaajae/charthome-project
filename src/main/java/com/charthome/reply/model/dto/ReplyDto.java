@@ -20,15 +20,22 @@ public class ReplyDto {
     private String createDate;
     private String replyStatus;
 
-    public static ReplyDto toDto(ReplyEntity entity) {
-        ReplyDto reply = new ReplyDto();
-        reply.setReplyNo(entity.getReplyNo());
-        reply.setBoardNo(entity.getBoardNo());
-        reply.setUserNo(entity.getUserNo());
-        reply.setReplyContent(entity.getReplyContent());
-        reply.setCreateDate(TimeFormatter.formatTimeString(entity.getCreateDate()));
-        reply.setReplyStatus(entity.getReplyStatus());
-        return reply;
+    public ReplyDto(ReplyEntity reply){
+        replyNo = reply.getId();
+        boardNo = reply.getBoard().getId();
+        userNo = reply.getUser().getId();
+        replyContent = reply.getReplyContent();
+        createDate = TimeFormatter.formatTimeString(reply.getCreateDate());
     }
+//    public static ReplyDto toDto(ReplyEntity entity) {
+//        ReplyDto reply = new ReplyDto();
+//        reply.setReplyNo(entity.getId());
+////        reply.setBoardNo(entity.getBoardNo());
+////        reply.setUserNo(entity.getUserNo());
+//        reply.setReplyContent(entity.getReplyContent());
+//        reply.setCreateDate(TimeFormatter.formatTimeString(entity.getCreateDate()));
+//        reply.setReplyStatus(entity.getReplyStatus());
+//        return reply;
+//    }
 
 }

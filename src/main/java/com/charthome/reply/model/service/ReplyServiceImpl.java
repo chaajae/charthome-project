@@ -23,13 +23,13 @@ public class ReplyServiceImpl implements ReplyService{
         replyRepository.save(entity);
     }
 
-    @Override
-    public List<ReplyDto> replyList(Long boardNo) {
-        List<ReplyEntity> entityList = replyRepository.findAllByBoardNo(boardNo);
-        List<ReplyDto> replyList = new ArrayList<>();
-        for (ReplyEntity entity : entityList) {
-            replyList.add(ReplyDto.toDto(entity));
-        }
-        return replyList;
-    }
+//    @Override
+//    public List<ReplyDto> replyList(Long boardNo) {
+//        List<ReplyEntity> entityList = replyRepository.findAllByBoard(boardNo);
+//        List<ReplyDto> replyList = new ArrayList<>();
+//        for (ReplyEntity entity : entityList) {
+//            replyList.add(ReplyDto.toDto(entity));
+//        }
+//        return replyList;
+//    }
 }

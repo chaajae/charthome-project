@@ -161,7 +161,6 @@
             $(".boardlike-btn").click(function(){
                 <c:if test="${loginUser eq null}">
                     alert("로그인 후 가능합니다.");
-                    location.href = '/signin';
                 </c:if>
                 <c:if test="${loginUser ne null}">
                     const boardLike = {

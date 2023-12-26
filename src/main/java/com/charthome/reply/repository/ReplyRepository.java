@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ReplyRepository extends JpaRepository<ReplyEntity,Long> {
-    List<ReplyEntity> findAllByBoardNo(Long boardNo);
+    List<ReplyEntity> findAllByBoard(Long boardNo);
 }

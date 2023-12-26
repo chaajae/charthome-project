@@ -58,8 +58,8 @@ public class BoardController {
                                HttpServletResponse res){
         BoardDto boardItem = boardService.getBoardItem(boardNo,req,res);
         /* 수정 요망 */
-        List<ReplyDto> replyList = replyService.replyList(boardNo);
-        model.addAttribute("replyList",replyList);
+//        List<ReplyDto> replyList = replyService.replyList(boardNo);
+//        model.addAttribute("replyList",replyList);
         model.addAttribute("boardItem",boardItem);
         return "board/boardDetailView";
     }

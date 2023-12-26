@@ -92,8 +92,8 @@ public class OauthService {
         }
 
         Optional<UserEntity> loginEntity = userService.findUserByUserId(naverInfo.getId());
-        UserDto loginUser = UserDto.toUserDTO(loginEntity.get());
-
+//        UserDto loginUser = UserDto.toUserDTO(loginEntity.get());
+        UserDto loginUser = new UserDto(loginEntity.get());
         return loginUser;
     }
 

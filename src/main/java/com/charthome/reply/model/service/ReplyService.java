@@ -7,5 +7,5 @@ import java.util.List;
 public interface ReplyService {
     void replySave(ReplyDto reply);
 
-    List<ReplyDto> replyList(Long boardNo);
+//    List<ReplyDto> replyList(Long boardNo);
 }

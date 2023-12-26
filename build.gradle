@@ -31,9 +31,11 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-//	runtimeOnly 'mysql:mysql-connector-java'
+
 	runtimeOnly 'com.mysql:mysql-connector-j'
 
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.71'

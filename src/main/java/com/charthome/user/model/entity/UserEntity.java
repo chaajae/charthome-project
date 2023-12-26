@@ -1,22 +1,26 @@
 package com.charthome.user.model.entity;
 
+import com.charthome.board.model.entity.BoardEntity;
+import com.charthome.board.model.entity.BoardLikeEntity;
 import com.charthome.common.entity.BaseTimeEntity;
 import com.charthome.oauth.model.dto.NaverDto;
+import com.charthome.reply.model.entity.ReplyEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Setter
 @Getter
 @Table(name = "user")
-@ToString
 public class UserEntity extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userNo;
+    @Column(name = "user_no")
+    private Long id;
 
     @Column(unique = true)
     private String userId;
@@ -32,6 +36,16 @@ public class UserEntity extends BaseTimeEntity {
 
     @Column
     private String userStatus;
+
+    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
+    private List<BoardEntity> board;
+
+    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
+    private List<ReplyEntity> reply;
+
+    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
+    private List<BoardLikeEntity> boardLike;
+
 
 
     public static UserEntity toUserEntity(NaverDto naverDTO) {

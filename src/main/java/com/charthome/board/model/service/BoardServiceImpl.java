@@ -8,6 +8,7 @@ import com.charthome.board.model.entity.BoardEntity;
 import com.charthome.board.model.entity.BoardLikeEntity;
 import com.charthome.board.repository.BoardLikeRepository;
 import com.charthome.board.repository.BoardRepository;
+import com.charthome.reply.model.entity.ReplyEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -34,7 +35,7 @@ public class BoardServiceImpl implements BoardService{
     public void boardWrite(BoardDto board) {
         BoardEntity boardEntity = BoardEntity.toEntity(board);
 
-        Long boardNo = boardRepository.save(boardEntity).getBoardNo();
+        Long boardNo = boardRepository.save(boardEntity).getId();
         List<String> imgList = board.getImgList();
         List<AttachmentEntity> atList = new ArrayList<>();
         for (String imgUrl : imgList) {
@@ -45,9 +46,10 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public BoardDto getBoardItem(Long boardNo, HttpServletRequest req, HttpServletResponse res) {
-        Optional<BoardEntity> boardByBoardNo = boardRepository.findByBoardNo(boardNo);
+        Optional<BoardEntity> boardByBoardNo = boardRepository.findById(boardNo);
         BoardEntity boardEntity = boardByBoardNo.get();
-
+        List<ReplyEntity> reply = boardEntity.getReply();
+        System.out.println("reply = " + reply);
         Cookie cookie = null;
         Cookie[] cArr = req.getCookies();
 
@@ -78,8 +80,8 @@ public class BoardServiceImpl implements BoardService{
             cookie.setMaxAge(60 * 60 * 1);
             res.addCookie(cookie);
         }
-        BoardDto boardItem = BoardDto.toDto(boardEntity);
-
+//        BoardDto boardItem = BoardDto.toDto(boardEntity);
+        BoardDto boardItem = new BoardDto(boardEntity);
 
 
         return boardItem;
@@ -92,17 +94,17 @@ public class BoardServiceImpl implements BoardService{
 
         int page = pageable.getPageNumber() - 1; // page 위치에 있는 값은 0부터 시작한다.
         int pageLimit = 10;
-        Page<BoardEntity> entityList = boardRepository.findAllByBoardCode(boardCode,PageRequest.of(page,pageLimit,Sort.by(Sort.Direction.DESC,"boardNo")));
+        Page<BoardEntity> entityList = boardRepository.findAllByBoardCode(boardCode,PageRequest.of(page,pageLimit,Sort.by(Sort.Direction.DESC,"id")));
         Page<BoardDto> dtoList = entityList.map(
-                entity -> BoardDto.toDto(entity)
-
+//                entity -> BoardDto.toDto(entity)
+                entity -> new BoardDto(entity)
         );
         return dtoList;
     }
 
     @Override
     public void boardLike(BoardLikeDto boardLikeDto) {
-        Optional<BoardLikeEntity> boardLikeEntity = boardLikeRepository.findByUserNo(boardLikeDto.getUserNo());
+        Optional<BoardLikeEntity> boardLikeEntity = boardLikeRepository.findById(boardLikeDto.getUserNo());
         if(boardLikeEntity.isEmpty()){
             boardLikeRepository.save(BoardLikeEntity.toBoardLikeEntity(boardLikeDto));
         }else{
